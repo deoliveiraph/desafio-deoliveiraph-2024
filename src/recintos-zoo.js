@@ -1,4 +1,4 @@
-// Definição dos recintos(refiz tudo assim ficou mais organizado e melhor de ler ;)
+// Definição dos recintos
 const recintos = [
     { id: 1, bioma: 'savana', total: 10, ocupados: 3, animais: ['MACACO'] },
     { id: 2, bioma: 'floresta', total: 5, ocupados: 0, animais: [] },
@@ -19,17 +19,13 @@ const animais = {
 
 class RecintosZoo {
     // Método para verificar se o animal é válido
-    validarAnimal(animal) {
-        return animais[animal] !== undefined;
-    }
+    validarAnimal = (animal) => animais[animal] !== undefined;
 
     // Método para verificar se a quantidade é válida
-    validarQuantidade(quantidade) {
-        return quantidade > 0 && Number.isInteger(quantidade);
-    }
+    validarQuantidade = (quantidade) => quantidade > 0 && Number.isInteger(quantidade);
 
     // Método principal para analisar os recintos
-    analisaRecintos(animal, quantidade) {
+    analisaRecintos = (animal, quantidade) => {
         if (!this.validarAnimal(animal)) {
             return { erro: "Animal inválido" };
         }
@@ -51,12 +47,10 @@ class RecintosZoo {
     }
 
     // Método para verificar se o bioma do recinto é adequado para a espécie do animal
-    biomaAdequado(recinto, especie) {
-        return especie.bioma.some(b => recinto.bioma.includes(b));
-    }
+    biomaAdequado = (recinto, especie) => especie.bioma.some(b => recinto.bioma.includes(b));
 
     // Método para verificar se há espaço suficiente no recinto para alocar os animais
-    espacoSuficiente(recinto, especie, quantidade) {
+    espacoSuficiente = (recinto, especie, quantidade) => {
         let espacoNecessario = especie.tamanho * quantidade;
 
         if (recinto.animais.length > 0 && !recinto.animais.includes(especie.nome)) {
@@ -80,13 +74,6 @@ class RecintosZoo {
 }
 
 export { RecintosZoo as RecintosZoo };
-
-
-
-
-
-
-
 
 
 
